@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+        body{
+            margin: 0;
+            padding: 0;
+        }
+        img{
+            object-fit: cover;
+            width: 370px;
+            height: 220px;
+            border-radius: 20px;
+            position: absolute;
+            transform: translate(0,0);
+
+        }
+        .icon{
+            width: 13px;
+            height: 13px;
+            position: absolute;
+            border-radius: 4px;
+            margin-top: 0;
+            transform: translateY(40%);
+        }
+        .gold{
+            background-color: gold;
+        }
+        .bronze{
+            background-color: #cd7f32;
+        }
+        .silver{
+            background-color: silver;
+        }
+        .overlay{
+            width: 370px;
+            height: 220px;
+            border-radius: 20px;
+            background-color: black;
+            z-index: 1;
+            opacity: 0.3;
+            position: relative;
+        }
+        .txt{
+            padding-left: 20px;
+            font-family: Poppins;
+            
+        }
+        .mtxt{
+            position: absolute;
+            top: 80px;
+            padding-left: 20px;
+            z-index: 2;
+            color: #fff;
+        }
+        h1{
+            font-family: Poppins;
+            font-weight: 400;
+            color: white;
+            top: 100px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: absolute;
+            z-index: 2;
+            font-size: 25px;
+            padding-left: 20px;
+        }
+        .des{
+            font-family: Poppins;
+            font-weight: 400;
+            color: white;
+            position: absolute;
+            z-index: 2;
+            top: 135px;
+            padding-left: 20px;
+        }
+        .con{
+            position: relative;
+        }
+        .con{
+            margin-left: 80px;
+            margin-top: 20px;
+            cursor: pointer;
+            z-index: 7;
+        }
+        .full{
+            display: flex;
+            flex-wrap: wrap;
+        }
+        select{
+            background-color: rgb(60, 60, 60);
+            color: white;
+            font-family: poppins;
+            border: 0px;
+            outline: none;
+            height: 40px;
+            margin: 20px;
+            padding-left: 5px;
+            width: 80px;
+            appearance: none;
+        }
+        input{
+            background-color: rgb(60, 60, 60);
+            color: white;
+            border: 0px;
+            height: 40px;
+            padding-left: 10px;
+            color: white;
+            outline: none;
+            font-family: poppins;
+
+        }
+        form ion-icon{
+            position: absolute;
+            top: 33px;
+            transform: translateX(-150%);
+            color: white;
+            z-index: 1;
+        }
+        form{
+            margin-left: 70%;  
+            white-space: nowrap;          
+        }
+        @media only screen and (max-width: 1000px) {
+            form{
+            margin-left: 60%;  
+            white-space: nowrap;          
+        }
+        }
+        @media only screen and (max-width: 600px) {
+            form{
+            margin-left: 40%;  
+            white-space: nowrap;          
+        }
+}
+        .down{
+            width: 12px;
+            height: 12px;
+            margin-top: 34px;
+            margin-left: 75px;
+        }
+        a ion-icon{
+      position: absolute;
+      color: white;
+      top: 0px;
+      margin-left: 20px;
+      margin-top: 20px;
+      font-size: 30px;
+      cursor: pointer;
+      background-color: rgb(60, 60, 60);
+      padding: 8px;
+      border-radius: 50%;
+      box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.6);
+    }
+    .focus{
+        z-index: 10;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%) scale(1.5);
+        background-color: white;
+        height: 400px;
+        padding: 0;
+        border-radius: 20px;
+        overflow: hidden;
+        position: fixed;
+        cursor: auto;
+    }
+    .focus img,.focus .overlay{
+        border-radius: 0px;
+        height: 150px;
+    }
+    .focus .text{
+       position: relative;
+       bottom: 180px;
+       transform: scale(0.8) translateX(-10%);
+       z-index: 2;
+       
+    }
+    .blur{
+        overflow: hidden;
+    }
+    .darkne{
+        width: 100%;
+        height: 100vh;
+        position: fixed;
+        z-index:10;
+        opacity: .7;
+        top: 0px;
+        background-color: black;
+    }
+    .exit{
+        position: fixed;
+      color: white;
+      transform: translateY(-70%);
+      font-size: 30px;
+      cursor: pointer;
+      background-color: rgb(60, 60, 60);
+      padding: 8px;
+      border-radius: 50%;
+      box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.6);
+      display: none;
+      z-index: 11;
+    }
+    .fdes{
+        display: none;
+    }
+    .focus .fdes{
+        margin: auto;
+        position: absolute;
+        display: inline;
+    }
+    .focus .fdes p{
+        z-index: 15;
+        width: 75%;
+        margin: auto;
+        padding-top: 10px;
+        text-align: center;
+        font-family: Poppins;
+        font-size: 10px;
+    }
+    .focus .fdes button{
+text-transform: uppercase;
+    color:white;
+    font-family: Poppins;
+    border: 0px solid;
+    background-color: rgba(30, 108, 217, 0.8);
+    border-radius: 40px;
+     padding: 9px 20px;
+     letter-spacing: 4px;
+     font-size: 11px;
+     cursor: pointer;
+     outline: none;
+     position: relative;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%,30%);
+    }
+    </style>
+</head>
+<body>
+    <a href="home.html"><ion-icon name="arrow-back-outline"></ion-icon></a>
+    <form>
+        <img src="down.svg" alt="" class="down">
+        <select id="filter" onchange="update()">
+          <option value="None">All</option>
+          <option value="Gold">Gold</option>
+          <option value="Silver">Silver</option>
+          <option value="Bronze">Bronze</option>
+        </select>
+
+        <input type="text" placeholder="search..."><ion-icon name="search-outline"></ion-icon>
+      </form>      
+<ion-icon  id = "exit"class = "exit"name="close-outline"></ion-icon>
+
+
+
+
+
+
+
+      <script> 
+          function please(info){
+              document.getElementById("dark").classList.add("darkne")
+             const id = info.id
+             document.getElementById(id).classList.add("focus")
+             document.body.classList.add("blur")
+             document.querySelector(".exit").style.display = "inline"
+             document.querySelector(".exit").addEventListener("click",function(){
+                document.getElementById(id).classList.remove("focus")
+                document.body.classList.remove("blur")
+                document.getElementById("dark").classList.remove("darkne")
+                document.querySelector(".exit").style.display = "none"
+             })
+             window.addEventListener("resize",function(){
+                document.getElementById("exit").style.left = document.getElementById(id).offsetLeft + 250 + "px"
+             document.getElementById("exit").style.top = document.getElementById(id).offsetTop - 285 + "px"
+             })
+             document.getElementById("exit").style.left = document.getElementById(id).offsetLeft + 250 + "px"
+             document.getElementById("exit").style.top = document.getElementById(id).offsetTop - 285 + "px"
+          }
+        const selector = document.getElementById("filter");
+        var fils = selector.value
+        function update(){
+            fils = selector.value
+            if(fils == "Gold"){
+                reset()
+                hides()
+                hideb()    
+            }
+
+            if(fils == "Silver"){
+                reset()
+                hideg()
+                hideb()
+            }
+
+            if(fils == "Bronze"){
+                reset()
+                hideg()
+                hides()
+            }
+
+            if(fils == "None"){
+                reset()
+            }
+        }
+        function reset(){
+            var a = 1;
+                var text = "";
+                while (document.getElementById("gold"+a)) {
+                    document.getElementById("gold"+a).style.display = "block"
+                a++;
+}
+
+var b = 1;
+                var text = "";
+                while (document.getElementById("silver"+b)) {
+                    document.getElementById("silver"+b).style.display = "block"
+                b++;
+        }
+
+        var c = 1;
+                var text = "";
+                while (document.getElementById("bronze"+c)) {
+                    document.getElementById("bronze"+c).style.display = "block"
+                c++;
+        }
+
+
+        }
+        function hideg(){
+                var i = 1;
+                var text = "";
+                while (document.getElementById("gold"+i)) {
+                    document.getElementById("gold"+i).style.display = "none"
+                i++;
+}
+        }
+
+        function hides(){
+            var z = 1;
+                var text = "";
+                while (document.getElementById("silver"+z)) {
+                    document.getElementById("silver"+z).style.display = "none"
+                z++;
+        }
+        }
+
+        function hideb(){
+            var y = 1;
+                var text = "";
+                while (document.getElementById("bronze"+y)) {
+                    document.getElementById("bronze"+y).style.display = "none"
+                y++;
+        }
+        }
+     </script>
+     <div id="dark">
+     </div>
+    <div class="full">
+                    <div class="con" id="bronze1" onclick="please(this)">
+                <img src="https://images.unsplash.com/photo-1598177183267-28a7765536de?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=667&q=80" alt="">
+                <div class="overlay" ></div>
+                <div class="text">
+                    <p class="mtxt"><span class="icon bronze"></span><span class="txt">BRONZE</span></p>
+                <h1>Trip To Greece</h1>
+                <p class="des">Lorem ipsum dolor sit.</p>
+                </div>
+                <div class="fdes">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt dicta assumenda aliquid optio accusamus fugiat nisi, quod labore fuga eligendi magnam totam! Velit, inventore? Esse fuga repellat in doloremque alias dignissimos veritatis placeat voluptas excepturi et, quis quas modi atque eaque eos porro. Esse veritatis sapiente veniam similique earum deleniti quos assumenda quibusdam at nulla officia libero ex ratione, quasi tempore, sunt sed illum eos impedit! Vero, dolorem nisi laborum libero tenetur quos ad blanditiis distinctio sint saepe asperiores!</p>
+                    <button>Book Now</button>
+                </div>
+            </div>
+        
+            <div class="con" id="gold1" onclick="please(this)">
+                <img src="https://images.unsplash.com/photo-1470219556762-1771e7f9427d?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8bmV3JTIweW9yayUyMGNpdHl8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="">
+                <div class="overlay"></div>
+                <div class="text">
+                    <p class="mtxt"><span class="icon gold"></span><span class="txt">GOLD</span></p>
+                <h1>Trip To NYC</h1>
+                <p class="des">Lorem ipsum dolor sit.</p>
+                </div>
+                <div class="fdes">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt dicta assumenda aliquid optio accusamus fugiat nisi, quod labore fuga eligendi magnam totam! Velit, inventore? Esse fuga repellat in doloremque alias dignissimos veritatis placeat voluptas excepturi et, quis quas modi atque eaque eos porro. Esse veritatis sapiente veniam similique earum deleniti quos assumenda quibusdam at nulla officia libero ex ratione, quasi tempore, sunt sed illum eos impedit! Vero, dolorem nisi laborum libero tenetur quos ad blanditiis distinctio sint saepe asperiores!</p>
+                    <button>Book Now</button>
+                </div>
+            </div>
+        
+            <div class="con" id="silver1" onclick="please(this)">
+                <img src="https://images.unsplash.com/photo-1431274172761-fca41d930114?ixid=MXwxMjA3fDB8MHxzZWFyY2h8M3x8cGFyaXN8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="">
+                <div class="overlay"></div>
+                <div class="text">
+                    <p class="mtxt"><span class="icon silver"></span><span class="txt">SILVER</span></p>
+                <h1>Trip To Paris</h1>
+                <p class="des">Lorem ipsum dolor sit.</p>
+                </div>
+                <div class="fdes">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt dicta assumenda aliquid optio accusamus fugiat nisi, quod labore fuga eligendi magnam totam! Velit, inventore? Esse fuga repellat in doloremque alias dignissimos veritatis placeat voluptas excepturi et, quis quas modi atque eaque eos porro. Esse veritatis sapiente veniam similique earum deleniti quos assumenda quibusdam at nulla officia libero ex ratione, quasi tempore, sunt sed illum eos impedit! Vero, dolorem nisi laborum libero tenetur quos ad blanditiis distinctio sint saepe asperiores!</p>
+                    <button>Book Now</button>
+                </div>
+            </div>
+    
+    
+            <div class="con" id="gold2" onclick="please(this)">
+                <img src="https://images.unsplash.com/photo-1504575958497-ccdd586c2997?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=754&q=80" alt="">
+                <div class="overlay"></div>
+                <div class="text">
+                    <p class="mtxt"><span class="icon gold"></span><span class="txt">GOLD</span></p>
+                <h1>Trip To Australia</h1>
+                <p class="des">Lorem ipsum dolor sit.</p>
+                </div>
+                <div class="fdes">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt dicta assumenda aliquid optio accusamus fugiat nisi, quod labore fuga eligendi magnam totam! Velit, inventore? Esse fuga repellat in doloremque alias dignissimos veritatis placeat voluptas excepturi et, quis quas modi atque eaque eos porro. Esse veritatis sapiente veniam similique earum deleniti quos assumenda quibusdam at nulla officia libero ex ratione, quasi tempore, sunt sed illum eos impedit! Vero, dolorem nisi laborum libero tenetur quos ad blanditiis distinctio sint saepe asperiores!</p>
+                    <button>Book Now</button>
+                </div>
+            </div>
+        
+            <div class="con" id="gold3" onclick="please(this)">
+                <img src="https://images.unsplash.com/photo-1547448415-e9f5b28e570d?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8cnVzc2lhfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="">
+                <div class="overlay"></div>
+                <div class="text">
+                    <p class="mtxt"><span class="icon gold"></span><span class="txt">GOLD</span></p>
+                <h1>Trip To Russia</h1>
+                <p class="des">Lorem ipsum dolor sit.</p>
+                </div>
+                <div class="fdes">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt dicta assumenda aliquid optio accusamus fugiat nisi, quod labore fuga eligendi magnam totam! Velit, inventore? Esse fuga repellat in doloremque alias dignissimos veritatis placeat voluptas excepturi et, quis quas modi atque eaque eos porro. Esse veritatis sapiente veniam similique earum deleniti quos assumenda quibusdam at nulla officia libero ex ratione, quasi tempore, sunt sed illum eos impedit! Vero, dolorem nisi laborum libero tenetur quos ad blanditiis distinctio sint saepe asperiores!</p>
+                    <button>Book Now</button>
+                </div>
+            </div>
+        
+            <div class="con" id="bronze2" onclick="please(this)">
+                <img src="https://images.unsplash.com/photo-1523805009345-7448845a9e53?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NXx8YWZyaWNhfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="">
+                <div class="overlay"></div>
+                <div class="text">
+                    <p class="mtxt"><span class="icon bronze"></span><span class="txt">BRONZE</span></p>
+                <h1>Trip To Africa</h1>
+                <p class="des">Lorem ipsum dolor sit.</p>
+                </div>
+                <div class="fdes">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt dicta assumenda aliquid optio accusamus fugiat nisi, quod labore fuga eligendi magnam totam! Velit, inventore? Esse fuga repellat in doloremque alias dignissimos veritatis placeat voluptas excepturi et, quis quas modi atque eaque eos porro. Esse veritatis sapiente veniam similique earum deleniti quos assumenda quibusdam at nulla officia libero ex ratione, quasi tempore, sunt sed illum eos impedit! Vero, dolorem nisi laborum libero tenetur quos ad blanditiis distinctio sint saepe asperiores!</p>
+                    <button>Book Now</button>
+                </div>
+            </div>
+    
+            <div class="con" id="silver2" onclick="please(this)">
+                <img src="https://images.unsplash.com/photo-1467269204594-9661b134dd2b?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Mnx8ZXVyb3BlfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="">
+                <div class="overlay"></div>
+                <div class="text">
+                    <p class="mtxt"><span class="icon silver"></span><span class="txt">SILVER</span></p>
+                <h1>Trip To Europe</h1>
+                <p class="des">Lorem ipsum dolor sit.</p>
+                </div>
+                <div class="fdes">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt dicta assumenda aliquid optio accusamus fugiat nisi, quod labore fuga eligendi magnam totam! Velit, inventore? Esse fuga repellat in doloremque alias dignissimos veritatis placeat voluptas excepturi et, quis quas modi atque eaque eos porro. Esse veritatis sapiente veniam similique earum deleniti quos assumenda quibusdam at nulla officia libero ex ratione, quasi tempore, sunt sed illum eos impedit! Vero, dolorem nisi laborum libero tenetur quos ad blanditiis distinctio sint saepe asperiores!</p>
+                    <button>Book Now</button>
+                </div>
+            </div>
+        
+            <div class="con" id="bronze3" onclick="please(this)">
+                <img src="https://images.unsplash.com/photo-1476977251893-330046eb5ec8?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTN8fGNhbmFkYXxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="">
+                <div class="overlay"></div>
+                <div class="text">
+                    <p class="mtxt"><span class="icon bronze"></span><span class="txt">BRONZE</span></p>
+                <h1>Trip To Canada</h1>
+                <p class="des">Lorem ipsum dolor sit.</p>
+                </div>
+                <div class="fdes">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt dicta assumenda aliquid optio accusamus fugiat nisi, quod labore fuga eligendi magnam totam! Velit, inventore? Esse fuga repellat in doloremque alias dignissimos veritatis placeat voluptas excepturi et, quis quas modi atque eaque eos porro. Esse veritatis sapiente veniam similique earum deleniti quos assumenda quibusdam at nulla officia libero ex ratione, quasi tempore, sunt sed illum eos impedit! Vero, dolorem nisi laborum libero tenetur quos ad blanditiis distinctio sint saepe asperiores!</p>
+                    <button>Book Now</button>
+                </div>
+            </div>
+        
+            <div class="con" id="gold4" onclick="please(this)">
+                <img src="https://images.unsplash.com/photo-1525874684015-58379d421a52?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NXx8cm9tZXxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="">
+                <div class="overlay"></div>
+                <div class="text">
+                    <p class="mtxt"><span class="icon gold"></span><span class="txt">GOLD</span></p>
+                <h1>Trip To Rome</h1>
+                <p class="des">Lorem ipsum dolor sit.</p>
+                </div>
+                <div class="fdes">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt dicta assumenda aliquid optio accusamus fugiat nisi, quod labore fuga eligendi magnam totam! Velit, inventore? Esse fuga repellat in doloremque alias dignissimos veritatis placeat voluptas excepturi et, quis quas modi atque eaque eos porro. Esse veritatis sapiente veniam similique earum deleniti quos assumenda quibusdam at nulla officia libero ex ratione, quasi tempore, sunt sed illum eos impedit! Vero, dolorem nisi laborum libero tenetur quos ad blanditiis distinctio sint saepe asperiores!</p>
+                    <button>Book Now</button>
+                </div>
+        </div>
+
+        <div class="con" id="bronze4" onclick="please(this)">
+            <img src="https://images.unsplash.com/photo-1470093014438-2ede8d7a4818?ixid=MXwxMjA3fDB8MHxzZWFyY2h8OXx8bmV3JTIwemVhbGFuZHxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="">
+            <div class="overlay"></div>
+            <div class="text">
+                <p class="mtxt"><span class="icon bronze"></span><span class="txt">BRONZE</span></p>
+            <h1>Trip To New Zealnd</h1>
+            <p class="des">Lorem ipsum dolor sit.</p>
+            </div>
+            <div class="fdes">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt dicta assumenda aliquid optio accusamus fugiat nisi, quod labore fuga eligendi magnam totam! Velit, inventore? Esse fuga repellat in doloremque alias dignissimos veritatis placeat voluptas excepturi et, quis quas modi atque eaque eos porro. Esse veritatis sapiente veniam similique earum deleniti quos assumenda quibusdam at nulla officia libero ex ratione, quasi tempore, sunt sed illum eos impedit! Vero, dolorem nisi laborum libero tenetur quos ad blanditiis distinctio sint saepe asperiores!</p>
+                <button>Book Now</button>
+            </div>
+    </div>
+
+    <div class="con" id="silver3" onclick="please(this)">
+        <img src="    https://images.unsplash.com/photo-1485123263479-f5ea30a2f92d?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTR8fHN3ZWRlbnxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60
+        0" alt="">
+        <div class="overlay"></div>
+        <div class="text">
+            <p class="mtxt"><span class="icon silver"></span><span class="txt">SILVER</span></p>
+        <h1>Trip To Switzerland</h1>
+        <p class="des">Lorem ipsum dolor sit.</p>
+        </div>
+        <div class="fdes">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt dicta assumenda aliquid optio accusamus fugiat nisi, quod labore fuga eligendi magnam totam! Velit, inventore? Esse fuga repellat in doloremque alias dignissimos veritatis placeat voluptas excepturi et, quis quas modi atque eaque eos porro. Esse veritatis sapiente veniam similique earum deleniti quos assumenda quibusdam at nulla officia libero ex ratione, quasi tempore, sunt sed illum eos impedit! Vero, dolorem nisi laborum libero tenetur quos ad blanditiis distinctio sint saepe asperiores!</p>
+            <button>Book Now</button>
+        </div>
+</div>
+
+<div class="con" id="silver4" onclick="please(this)">
+    <img src="https://images.unsplash.com/photo-1533929736458-ca588d08c8be?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Mnx8bG9uZG9ufGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60
+    0" alt="">
+    <div class="overlay"></div>
+    <div class="text">
+        <p class="mtxt"><span class="icon silver"></span><span class="txt">SILVER</span></p>
+    <h1>Trip To London</h1>
+    <p class="des">Lorem ipsum dolor sit.</p>
+    </div>
+    <div class="fdes">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt dicta assumenda aliquid optio accusamus fugiat nisi, quod labore fuga eligendi magnam totam! Velit, inventore? Esse fuga repellat in doloremque alias dignissimos veritatis placeat voluptas excepturi et, quis quas modi atque eaque eos porro. Esse veritatis sapiente veniam similique earum deleniti quos assumenda quibusdam at nulla officia libero ex ratione, quasi tempore, sunt sed illum eos impedit! Vero, dolorem nisi laborum libero tenetur quos ad blanditiis distinctio sint saepe asperiores!</p>
+        <button>Book Now</button>
+    </div>
+</div>
+
+<div class="con" id="gold5" onclick="please(this)">
+    <img src="https://images.unsplash.com/photo-1567838989344-c8989cb6547d?ixid=MXwxMjA3fDB8MHxzZWFyY2h8M3x8aGF3YWl8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60
+    0" alt="">
+    <div class="overlay"></div>
+    <div class="text">
+        <p class="mtxt"><span class="icon gold"></span><span class="txt">GOLD</span></p>
+    <h1>Trip To Hawai</h1>
+    <p class="des">Lorem ipsum dolor sit.</p>
+    </div>
+    <div class="fdes">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt dicta assumenda aliquid optio accusamus fugiat nisi, quod labore fuga eligendi magnam totam! Velit, inventore? Esse fuga repellat in doloremque alias dignissimos veritatis placeat voluptas excepturi et, quis quas modi atque eaque eos porro. Esse veritatis sapiente veniam similique earum deleniti quos assumenda quibusdam at nulla officia libero ex ratione, quasi tempore, sunt sed illum eos impedit! Vero, dolorem nisi laborum libero tenetur quos ad blanditiis distinctio sint saepe asperiores!</p>
+                    <button>Book Now</button>
+                </div>
+</div>
+    </div>
+    <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+    <script></script>
+</body>
+</html>

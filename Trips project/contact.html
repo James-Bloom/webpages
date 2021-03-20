@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body{
+      background-image: url(https://images.unsplash.com/photo-1566896544845-6f2aacb3401a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80);
+      background-size: cover;
+      margin: 200px auto;
+      font-family: sans-serif;
+      background-repeat: no-repeat;
+      overflow: hidden;
+    }
+    .form-container{
+      max-width: 400px;
+      width: 100%;
+      margin: 0 auto;
+      box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.4);
+      position: relative;
+      bottom: 120px;
+    }
+
+    .form-inner{
+      padding: 30px;
+    }
+    h1{
+      font-weight: normal;
+      padding: 20px;
+      color: #fff;
+      text-align: center;
+      box-shadow: 0 5px 5px 0 rgba(0, 0, 0, .1);
+    }
+    .input-holder{
+      position: relative;
+      margin-bottom: 25px;
+    }
+    .input-text,textarea{
+      width: 100%;
+      height: 40px;
+      border: none;
+      border-bottom: 1px solid #fff;
+      background-color: transparent;
+      color: #fff;
+    }
+    textarea{
+      min-height: 160px;
+      padding: 15px;
+      resize: none;
+    }
+    .label{
+      position: absolute;
+      pointer-events: none;
+      transition: .2s ease all;
+      font-size: 16px;
+      color: #fff;
+      top: 18px;
+    }
+    button{
+      cursor: pointer;
+      border-radius: 3px;
+      padding: 15px;
+      width: 100%;
+      box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.3);
+      border: none;
+      font-size: 16px;
+      background: transparent;
+      transition: .2s ease;
+      color: #fff;
+    }
+    button,input,textarea{
+      outline: none;
+    }
+    button:hover{
+      box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.6);
+
+    }
+    input:focus{
+      border-bottom: 2px solid #fff;
+    }textarea{
+      font-family: sans-serif;
+    }
+    input:focus ~ .label,
+    textarea:focus ~ .label,
+    input:not(:focus):valid ~ .label,
+    textarea:not(:focus):valid ~ .label{
+      top: -10px;
+      left: 0;
+      font-size: 11px;
+    }
+    ion-icon{
+      position: absolute;
+      color: white;
+      top: 0px;
+      margin-left: 20px;
+      margin-top: 20px;
+      font-size: 30px;
+      cursor: pointer;
+      background-color: transparent;
+      padding: 8px;
+      border-radius: 50%;
+      box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.6);
+    }
+  </style>
+</head>
+<body>
+  <a href="home.html"><ion-icon name="arrow-back-outline"></ion-icon></a>
+  <div class="form-container">
+    <form action="">
+      <h1>Contact Us</h1>
+      <div class="form-inner">
+        <div class="input-holder">
+          <input type="text" class="input-text" required>
+          <span class="label">Email Address</span>
+        </div>
+
+        <div class="input-holder">
+          <input type="text" class="input-text" required>
+          <span class="label">Full Name</span>
+        </div>
+
+        <div class="input-holder">
+          <textarea required></textarea>
+          <span class="label">Message</span>
+        </div>
+        <button>Send</button>
+      </div>
+    </form>
+  </div>
+  <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+</body>
+</html>
